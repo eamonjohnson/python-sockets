@@ -8,9 +8,9 @@ from threading import Thread
 def client_thread(client_socket, address):
     print("Connection from {}:{}.").format(address[0], address[1])
     data = client_socket.recv(config.BUFFER_SIZE)
-    message = data.decode("utf8")
+    message = data.decode(config.MESSAGE_ENCODING)
     if message:
-        print("{}:{} says {}").format(address[0], address[1], message)
+        print("Client at {}:{} says \"{}\".").format(address[0], address[1], message)
 
 if __name__ == '__main__':
     # Create socket, bind to port, and start listening.
